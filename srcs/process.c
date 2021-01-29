@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 10:29:03 by alganoun          #+#    #+#             */
-/*   Updated: 2021/01/27 14:39:35 by alganoun         ###   ########lyon.fr   */
+/*   Created: 2021/01/29 10:51:41 by alganoun          #+#    #+#             */
+/*   Updated: 2021/01/29 15:11:42 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
-int			ft_strcmp(char *s1, char *s2)
+int		pwd_process()
 {
-	int i;
+	char *buffer;
 
-	i = 0;
-	while (s1[i] && s2[i] && s2[i] == s1[i])
-		i++;
-	return (s1[i] - s2[i]);
+	buffer = (char *)malloc(PATH_MAX);
+	if (getcwd(buffer, PATH_MAX) != NULL)
+		write_output(buffer);
+	free(buffer);
+	return (0);
 }
-
-size_t		ft_strlen(const char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-//void		check_whitespace(char *line)
-//{
-//
-//}
