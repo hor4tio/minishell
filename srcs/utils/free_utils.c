@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 08:53:55 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/09 08:31:10 by alganoun         ###   ########lyon.fr   */
+/*   Created: 2021/02/09 09:06:00 by alganoun          #+#    #+#             */
+/*   Updated: 2021/02/09 09:15:43 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-int main()
+void	safe_free(char **str)
 {
+	if (*str)
+		free(*str);
+	*str = NULL;
+}
 
-	int ret;
-	char *line;
+char	**free_tab(char **tab, int count)
+{
+	int i;
 
-	line = "";
-	printf("%d\n", word_count(line));
-	//help for PWD
-	//char buffer[PATH_MAX];
-	//char *str;
-//
-	//if (getcwd(buffer, sizeof(buffer)) != NULL)
-	//	printf("PATH = %s", buffer);
-	return (0);
+	i = 0;
+	while (count != 0)
+	{
+		safe_free(&tab([i]);
+		i++;
+		count--;
+	}
+	return (NULL);
 }

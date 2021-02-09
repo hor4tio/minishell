@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/01/29 14:54:55 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 09:25:50 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,14 @@ int		display_txt(char *str)
 	return (0);
 }
 
-int		input_process(char *line)
+int		input_process(char *line, t_cmd **cmd)
 {
-	char *word;
+	char	*word;
+	int		cmd_nb;
 
-	word = get_next_word(&line);
-	//if (strncmp(line, "echo", 4) == 0)
-	//	return(echo_process());
-	//else if (strncmp(line, "cd", 2) == 0)
-	//	return(cd_process());
-	if (strncmp(line, "pwd", 3) == 0)
-		return (pwd_process());
-	//else if (strncmp(line, "export", 6) == 0)
-	//	return (export_process());
-	//else if (strncmp(line, "unset", 5) == 0)
-	//	return (unset_process());
-	//else if (strncmp(line, "env", 3) == 0)
-	//	return (env_process());
+	cmd_nb = word_count(line);
+	if (!((*cmd)->cmdline = cmd_parser(line)))
+		return (write_exec_error());
 	else if (strncmp(line, "bash -help", 10) == 0)
 	{
 		if (display_txt("version.txt") == -1 ||

@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/01/29 14:55:42 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 09:24:58 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # include <string.h>
 # include "../srcs/utils/libft/libft.h"
 
+
+typedef struct	s_cmd
+{
+	char **cmdline;
+	char *path;
+}				t_cmd;
+
 /*------------UTILS---------------*/
 int			get_next_line(int fd, char **line);
 int			get_next_input(char **line);
@@ -33,5 +40,8 @@ ssize_t		write_output(char *str);
 char		*get_next_word(char **line);
 int			display_text(char *str);
 int			pwd_process();
+int			word_count(char *str);
+char		**free_tab(char **tab, int count);
+int			write_exec_errors();
 
 #endif

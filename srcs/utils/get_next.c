@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:19:07 by alganoun          #+#    #+#             */
-/*   Updated: 2021/01/29 14:47:03 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/01 11:49:27 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*get_next_word(char **line)
 	ft_strlcpy(word, *line, i + 1);
 	return (word);
 }
+
+
 
 int		get_next_line(int fd, char **line)
 {
