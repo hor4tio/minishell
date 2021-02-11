@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/09 09:24:58 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 08:20:47 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int			pwd_process();
 int			word_count(char *str);
 char		**free_tab(char **tab, int count);
 int			write_exec_errors();
+char		**cmd_parser(char *line, int nb);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 08:00:40 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/09 09:19:00 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 09:07:47 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ char	**cmd_parser(char *line, int nb)
 		j++;
 		i = ft_strlen(word);
 	}
-	tab[j] == NULL;
+	tab[j] = NULL;
 	return (tab);
 }
