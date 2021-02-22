@@ -6,28 +6,26 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:19:07 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/01 11:49:27 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/22 09:02:58 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*get_next_word(char **line)
+char	*get_next_word(char *line)
 {
 	int i;
 	char *word;
 
 	i = 0;
-	ft_rm_whitespace(line);
-	while (((*line)[i] <= 9 || (*line)[i] >= 13) && (*line)[i] != 32)
+	ft_rm_whitespace(&line);
+	while ((line[i] <= 9 || line[i] >= 13) && line[i] != 32)
 		i++;
 	if (!(word = malloc(i + 1)))
 		return (NULL);
-	ft_strlcpy(word, *line, i + 1);
+	ft_strlcpy(word, line, i + 1);
 	return (word);
 }
-
-
 
 int		get_next_line(int fd, char **line)
 {

@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/11 09:14:17 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/22 16:41:38 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,9 @@ int		input_process(char *line, t_cmd **cmd)
 	i = 0;
 	cmd_nb = word_count(line);
 	if (!((*cmd)->cmdline = cmd_parser(line, cmd_nb)))
-		return (write_exec_errors());
-
-
-	//else if (strncmp(line, "bash -help", 10) == 0)
-	//{
-	//	if (display_txt("version.txt") == -1 ||
-	//		display_txt("minishell_help.txt"))
-	//		return (-1);
-	//}
-	//else if (strlen(line) > 0)
-	//	return (write_errors(2, word));
-	while((*cmd)->cmdline[i] != NULL)
-	{
-		printf("%s\n", (*cmd)->cmdline[i]);
-		i++;
-	}
+		return (write_errors(3, NULL));
+	if (execute_command(cmd) == -1)
+		return (-1);
 	return(0);
 }
 
@@ -70,17 +57,19 @@ int		main()
 	t_cmd	*cmd;
 
 	ret = 1;
-	init_struct(&cmd);
+	if(init_struct(&cmd) == -1)
+		return (write_errors(3, NULL));
 	if (display_txt("banner.txt") == -1)
 		return (-1);
 	while(ret != 0)
 	{
-		write(1, "[neo_bash-1.0$ ", 15);
+		write(1, "[minishell-1.0$ ", 16);
 		get_next_input(&line);
-		if ((ret = ft_strncmp(line, "exit", 4)) == 0) // il faut coder une fontion pour exit on ne peut pas le gérer de cette façon
-			write(1, EXIT_MSG, ft_strlen(EXIT_MSG));
-		else if (input_process(line) == -1)
+	//	if ((ret = ft_strncmp(line, "exit", 4)) == 0) // il faut coder une fontion pour exit on ne peut pas le gérer de cette façon
+	//		write(1, EXIT_MSG, ft_strlen(EXIT_MSG));
+		if (input_process(line, &cmd) == -1)
 			return(-1);
+		// il faut que tu regarde si c'est auniveau des free qu'il y a des segfaults
 
 	}
 	return (0);

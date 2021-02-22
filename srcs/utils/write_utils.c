@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 11:00:24 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/11 08:29:07 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/22 14:15:18 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 ssize_t		write_output(char *str)
 {
 	return ((write(1, str, ft_strlen(str))) + (write(1, "\n", 1)));
-}
-
-int		write_exec_errors()
-{
-	write(1, "Something went wrong with the program execution\n", 48);
-	return (-1);
 }
 
 int		write_errors(int option, char *str)
@@ -38,5 +32,7 @@ int		write_errors(int option, char *str)
 		write(1, ": command not found\n", 20);
 		return (0);
 	}
+	else if (option == 3)
+		write(1, "Yikes, something went wrong...\n", 31);
 	return (-1);
 }
