@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:06:00 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/22 09:49:24 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/23 16:37:36 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@ void	safe_free(char **str)
 	*str = NULL;
 }
 
-char	**free_tab(char **tab, int count)
+void	free_tab(char ***tab, int count)
 {
 	int i;
 
 	i = 0;
 	while (count != 0)
 	{
-		safe_free(&tab[i]);
+		safe_free(&(*tab)[i]);
 		i++;
 		count--;
 	}
-	return (NULL);
+	free(*tab);
+	*tab = NULL;
 }

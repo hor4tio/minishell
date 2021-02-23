@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:19:07 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/22 09:02:58 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/23 14:39:58 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_next_word(char *line)
 
 	i = 0;
 	ft_rm_whitespace(&line);
-	while ((line[i] <= 9 || line[i] >= 13) && line[i] != 32)
+	while (line[i] && (line[i] <= 9 || line[i] >= 13) && line[i] != 32)
 		i++;
 	if (!(word = malloc(i + 1)))
 		return (NULL);

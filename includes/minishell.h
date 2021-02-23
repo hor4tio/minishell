@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/22 16:24:07 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/23 15:15:12 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ int			display_txt(char *str);
 int			pwd_process(t_cmd **cmd);
 int			bash_process(t_cmd **cmd, char **tab);
 int			word_count(char *str);
-char		**free_tab(char **tab, int count);
 int			write_exec_errors();
 char		**cmd_parser(char *line, int nb);
 int			init_struct(t_cmd **cmd);
 int			execute_command(t_cmd **cmd);
+void		free_tab(char ***tab, int count);
+void		safe_free(char **str);
 
 #endif
