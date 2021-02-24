@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/23 16:33:08 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/24 13:28:36 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,20 @@ int		input_process(char *line, t_cmd **cmd)
 
 	i = 0;
 	cmd_nb = word_count(line);
-	if (!((*cmd)->cmdline = cmd_parser(line, cmd_nb)))
+	if (((*cmd)->cmdline = cmd_parser(line, cmd_nb)) == NULL)
 		return (write_errors(3, NULL));
+	else if ((*cmd)->cmdline == (char **)-1)
+	{
+		printf("OK");
+		return (0);
+	}
 	if (execute_command(cmd) == -1)
 		return (-1);
 	free_tab(&((*cmd)->cmdline), cmd_nb + 1);
 	return(0);
 }
 
-int		main()
+int		main(int argc, char **argv, char **data)
 {
 	int ret;
 	int	fd;
@@ -66,14 +71,16 @@ int		main()
 	{
 		write(1, "[minishell-1.0$ ", 16);
 		get_next_input(&line);
-		if ((ret = ft_strncmp(line, "exit", 4)) == 0) // il faut coder une fontion pour exit on ne peut pas le gérer de cette façon
+		if ((ret = ft_strncmp(line, "exit", 4)) == 0)
 			write(1, EXIT_MSG, ft_strlen(EXIT_MSG));
 		else if (input_process(line, &cmd) == -1)
 			return(-1);
-		// il faut que tu regarde si c'est auniveau des free qu'il y a des segfaults
 		safe_free(&line);
 	}
 	safe_free(&line);
 	safe_free((char **)&cmd);
 	return (0);
 }
+
+
+// il faut que je vois pour gerer le " tout seul
