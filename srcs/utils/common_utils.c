@@ -6,7 +6,7 @@
 /*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 08:00:40 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/24 13:22:26 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 16:53:10 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,24 @@ char	**cmd_parser(char *line, int nb)
 	word = NULL;
 	while (line[i])
 	{
-		if ((word = get_next_word(&(line[i]))) == NULL)
-			return (NULL);
-		else if (word == (char *) -1)
-			return ((char **)-1);
-		if (!(tab[j] = ft_strdup(word)))
+		while (line[i] && (line[i] >= 9 || line[i] <= 13) && line[i] == 32)
+			i++;
+		if (!(word = get_next_word(&(line[i])))
+			|| !(tab[j] = ft_strdup(word)))
 		{
 			free_tab(&tab, j + 1);
 			return (NULL);
 		}
+		printf("%s\n", tab[j]);
+		i =  i + ft_strlen(word);
 		safe_free(&word);
-		i =  i + ft_strlen(tab[j]);
 		j++;
 	}
 	tab[j] = NULL;
 	return (tab);
+}
+
+int		cmd_analyzer(char **tab, t_cmd **cmd)
+{
+
 }
