@@ -6,7 +6,7 @@
 /*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 08:00:40 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/03 13:39:41 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 14:18:38 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		word_count(char *str)
 		}
 		i++;
 	}
+	printf("nb = %d\n", nb);
 	return (nb);
 }
 

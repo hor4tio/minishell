@@ -6,7 +6,7 @@
 /*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/03 13:41:15 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 14:24:42 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,18 @@
 # include <string.h>
 # include "../srcs/utils/libft/libft.h"
 
+# define ID_ECHO 0
+# define ID_CD 1
+# define ID_PWD 2
+# define ID_EXPORT 3
+# define ID_UNSET 4
+# define ID_ENV 5
+
 typedef struct		s_prcess
 {
 	char			*data1;
 	int				data2;
+	int				id;
 	struct s_prcess	*next;
 }					t_prcess;
 

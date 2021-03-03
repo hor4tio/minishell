@@ -6,7 +6,7 @@
 /*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/03 13:44:18 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 14:29:58 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,17 @@ int		input_process(char *line, t_cmd **cmd)
 {
 	int		i;
 	//char	*word;
-	int		cmd_nb;
+	//int		cmd_nb;
 
 	i = 0;
-	cmd_nb = word_count(line);
-	if (((*cmd)->cmdline = cmd_parser(line, cmd_nb)) == NULL)
+	//cmd_nb = word_count(line);
+	//if (((*cmd)->cmdline = cmd_parser(line, cmd_nb)) == NULL)
+	//	return (write_errors(3, NULL));
+	//if (execute_command(cmd) == -1)
+	//	return (-1);
+	//free_tab(&((*cmd)->cmdline), cmd_nb + 1);
+	if (((*cmd)->cmdline = ft_split(line, ';')) == NULL)
 		return (write_errors(3, NULL));
-	if (execute_command(cmd) == -1)
-		return (-1);
-	free_tab(&((*cmd)->cmdline), cmd_nb + 1);
 	return(0);
 }
 
