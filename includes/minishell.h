@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/23 15:15:12 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 13:41:15 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ size_t		ft_strlen(const char *str);
 ssize_t		write_output(char *str);
 char		*get_next_word(char *line);
 int			display_txt(char *str);
-int			pwd_process(t_cmd **cmd);
-int			bash_process(t_cmd **cmd, char **tab);
+int			pwd_process(/*t_cmd **cmd*/);
+int			bash_process(/*t_cmd **cmd,*/ char **tab);
 int			word_count(char *str);
 int			write_exec_errors();
 char		**cmd_parser(char *line, int nb);

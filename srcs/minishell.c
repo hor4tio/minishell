@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/26 13:01:42 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 13:44:18 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		display_txt(char *str)
 int		input_process(char *line, t_cmd **cmd)
 {
 	int		i;
-	char	*word;
+	//char	*word;
 	int		cmd_nb;
 
 	i = 0;
@@ -50,18 +50,18 @@ int		input_process(char *line, t_cmd **cmd)
 	return(0);
 }
 
-int		main(int argc, char **argv, char **data)
+int		main(/*int argc, char **argv, char **data*/)
 {
 	int ret;
-	int	fd;
+	//int	fd;
 	char *line;
 	t_cmd	*cmd;
 
 	ret = 1;
 	if(init_struct(&cmd) == -1)
 		return (write_errors(3, NULL));
-	if (display_txt("banner.txt") == -1)
-		return (-1);
+	/*if (display_txt("banner.txt") == -1)
+		return (-1);*/
 	while(ret != 0)
 	{
 		write(1, "[minishell-1.0$ ", 16);

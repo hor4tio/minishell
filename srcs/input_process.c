@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:34:59 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/22 16:20:05 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 13:43:15 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 
-int		input_parsing(char *line)
+/*int		input_parsing(char *line)
 {
 	//int i;
 	//char *command;
@@ -28,7 +28,7 @@ int		input_parsing(char *line)
 	//	i = ft_strlen(command) - 1;
 	//}
 	return (0);
-}
+}*/
 
 int		execute_command(t_cmd **cmd)
 {
@@ -42,7 +42,7 @@ int		execute_command(t_cmd **cmd)
 		//else if (ft_strcmp(command, "cd") == 0)
 			//return(cd_process());
 		if (ft_strcmp((*cmd)->cmdline[i], "pwd") == 0)
-			return (pwd_process(cmd));
+			return (pwd_process(/*cmd*/));
 		//else if (ft_strcmp(command, "export") == 0)
 		//	return (export_process());
 		//else if (ft_strcmp(command, "unset") == 0)
@@ -50,7 +50,7 @@ int		execute_command(t_cmd **cmd)
 		//else if (ft_strcmp(command, "env") == 0)
 		//	return (env_process());
 		else if (ft_strcmp((*cmd)->cmdline[i], "bash") == 0)
-			return (bash_process(cmd, &((*cmd)->cmdline[i])));
+			return (bash_process(/*cmd,*/ &((*cmd)->cmdline[i])));
 		else if (ft_strlen((*cmd)->cmdline[i]) > 0)
 			return (write_errors(2, (*cmd)->cmdline[i]));
 		i++;
