@@ -6,7 +6,7 @@
 /*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/04 11:39:36 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:56:59 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,51 @@ int		display_txt(char *str)
 	return (0);
 }
 
+void	prcess_setid(t_prcess *prcess)
+{
+	char tmp[6];
+
+	ft_bzero(tmp, 6);
+	ft_memcpy(tmp, prcess->data, 6);
+	if (strstr(prcess->data, "echo"))
+		prcess->id = ID_ECHO;
+	else if (strstr(prcess->data, "cd"))
+		prcess->id = ID_CD;
+	else if(strstr(prcess->data, "pwd"))
+		prcess->id = ID_PWD;
+	else if(strstr(prcess->data, "export"))
+		prcess->id = ID_EXPORT;
+	else if(strstr(prcess->data, "unset"))
+		prcess->id = ID_UNSET;
+	else if(strstr(prcess->data, "env"))
+		prcess->id = ID_ENV;
+	else
+		prcess->id = ID_BIN;
+}
+
 void	init_cmds(t_cmd **cmd)
 {
 	int i;
 	t_prcess *prcess;
+	t_prcess *tmp;
 
 	i = 0;
 	prcess = NULL;
+	tmp = NULL;
 	while ((*cmd)->cmdline[i])
 	{
-		ft_prcessadd_back(&prcess, ft_prcessnew((*cmd)->cmdline[i]));
+		tmp = ft_prcessnew((*cmd)->cmdline[i]);
+		prcess_setid(tmp);
+		ft_prcessadd_back(&prcess, tmp);
 		i++;
 	}
 
-	/*AFFICHER LES COMMANDES DANS CHAQUE ELEMENT DE LA LISTE CHAINÉE
+	/*TESTEUR: AFFICHER LES COMMANDES DANS CHAQUE ELEMENT DE LA LISTE CHAINÉE
 	while (prcess)
 	{
-		printf("[ %s ]\n", prcess->data);
+		printf("[ %s ]<%d>\n", prcess->data, prcess->id);
 		prcess = prcess->next;
 	}*/
-
 }
 
 /*void		init_parser_cmd_ptr(int (*f[1])(t_cmd *))

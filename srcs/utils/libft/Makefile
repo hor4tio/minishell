@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/18 12:51:25 by alganoun          #+#    #+#              #
-#    Updated: 2021/02/01 11:47:11 by alganoun         ###   ########lyon.fr    #
+#    Updated: 2021/03/04 11:53:14 by musoufi          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ SRCS	= ./ft_atoi.c ./ft_bzero.c \
 			./ft_strdup.c ./ft_strjoin.c \
 			./ft_strlcat.c ./ft_strlcpy.c \
 			./ft_strlen.c ./ft_strmapi.c \
-			./ft_strncmp.c ./ft_strnstr.c ./ft_strcmp.c\
-			./ft_strrchr.c ./ft_strtrim.c \
+			./ft_strncmp.c ./ft_strnstr.c ./ft_strstr.c \
+			./ft_strcmp.c ./ft_strrchr.c ./ft_strtrim.c \
 			./ft_substr.c ./ft_tolower.c \
 			./ft_toupper.c \
 			./ft_rm_whitespace.c

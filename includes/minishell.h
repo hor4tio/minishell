@@ -6,7 +6,7 @@
 /*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/04 11:38:22 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:50:28 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ID_EXPORT 3
 # define ID_UNSET 4
 # define ID_ENV 5
+# define ID_BIN 6
 
 typedef struct		s_prcess
 {
@@ -66,5 +67,6 @@ void		free_tab(char ***tab, int count);
 void		safe_free(char **str);
 t_prcess	*ft_prcessnew(void *content);
 void		ft_prcessadd_back(t_prcess **aprcess, t_prcess *new);
+t_prcess	*ft_prcesslast(t_prcess *prcess);
 
 #endif
