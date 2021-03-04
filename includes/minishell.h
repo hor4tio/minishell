@@ -6,7 +6,7 @@
 /*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/03 14:24:42 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 11:38:22 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@
 
 typedef struct		s_prcess
 {
-	char			*data1;
-	int				data2;
+	char			*data;
 	int				id;
 	struct s_prcess	*next;
 }					t_prcess;
@@ -65,5 +64,7 @@ int			init_struct(t_cmd **cmd);
 int			execute_command(t_cmd **cmd);
 void		free_tab(char ***tab, int count);
 void		safe_free(char **str);
+t_prcess	*ft_prcessnew(void *content);
+void		ft_prcessadd_back(t_prcess **aprcess, t_prcess *new);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/03 14:29:58 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 11:39:36 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,47 @@ int		display_txt(char *str)
 	return (0);
 }
 
+void	init_cmds(t_cmd **cmd)
+{
+	int i;
+	t_prcess *prcess;
+
+	i = 0;
+	prcess = NULL;
+	while ((*cmd)->cmdline[i])
+	{
+		ft_prcessadd_back(&prcess, ft_prcessnew((*cmd)->cmdline[i]));
+		i++;
+	}
+
+	/*AFFICHER LES COMMANDES DANS CHAQUE ELEMENT DE LA LISTE CHAINÉE
+	while (prcess)
+	{
+		printf("[ %s ]\n", prcess->data);
+		prcess = prcess->next;
+	}*/
+
+}
+
+/*void		init_parser_cmd_ptr(int (*f[1])(t_cmd *))
+{
+	//f[0] = &cmd_echo;
+	//f[1] = &cmd_cd;
+	f[0] = &cmd_pwd;
+	//f[3] = &cmd_export;
+	//f[4] = &cmd_unset;
+	//f[5] = &cmd_env;
+	//f[6] = &cmd_bin;
+}
+
+int exec_prcess(t_cmd *cmd)
+{
+	int (*f[1])(t_cmd *);
+	
+	f[cmd->cmd_id](cmd);
+	return (0);
+}*/
+
 int		input_process(char *line, t_cmd **cmd)
 {
 	int		i;
@@ -49,6 +90,7 @@ int		input_process(char *line, t_cmd **cmd)
 	//free_tab(&((*cmd)->cmdline), cmd_nb + 1);
 	if (((*cmd)->cmdline = ft_split(line, ';')) == NULL)
 		return (write_errors(3, NULL));
+	init_cmds(cmd);
 	return(0);
 }
 

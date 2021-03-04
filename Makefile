@@ -10,7 +10,7 @@ SRCS_NAME               = 	minishell.c \
 							$(UTILS)/common_utils.c \
 							$(UTILS)/free_utils.c \
 							$(UTILS)/get_next.c \
-							$(UTILS)/init_utils.c \
+							$(UTILS)/struct_utils.c \
 							$(UTILS)/write_utils.c \
 							$(BUILT_IN)/bash_builtin.c \
 							$(BUILT_IN)/pwd_builtin.c \
@@ -20,7 +20,7 @@ SRCS			= $(addprefix $(SRCS_PATH)/,$(SRCS_NAME))
 OBJS            = $(SRCS:.c=.o)
 CC              = gcc
 RM              = rm -f
-CFLAGS          = -Wall -Wextra -Werror
+CFLAGS          = #-Wall -Wextra -Werror
 
 all     : $(LIBFT) $(NAME)
 
