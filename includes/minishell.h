@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/04 13:50:28 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 14:40:11 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct		s_prcess
 typedef struct		s_cmd
 {
 	char			**cmdline;
-	char			*path;
 	t_prcess		*prcess;
 }					t_cmd;
 
@@ -60,7 +59,7 @@ int			pwd_process(/*t_cmd **cmd*/);
 int			bash_process(/*t_cmd **cmd,*/ char **tab);
 int			word_count(char *str);
 int			write_exec_errors();
-char		**cmd_parser(char *line, int nb);
+void		cmd_parser(t_cmd **cmd);
 int			init_struct(t_cmd **cmd);
 int			execute_command(t_cmd **cmd);
 void		free_tab(char ***tab, int count);

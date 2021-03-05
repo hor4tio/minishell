@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/04 13:56:59 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 14:51:02 by alganoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@ int		display_txt(char *str)
 	ret = 1;
 
 	fd = open(str, O_RDONLY);
-	while(ret > 0)
+	printf("%d\n", fd);
+	if (fd > 0)
 	{
+		while(ret > 0)
+		{
+			ret = get_next_line(fd, &line);
+			write_output(line);
+			free(line);
+		}
 		ret = get_next_line(fd, &line);
 		write_output(line);
 		free(line);
 	}
-	ret = get_next_line(fd, &line);
-	write_output(line);
-	free(line);
 	if (ret != 0)
 		return (write_errors(1, str));
 	return (0);
@@ -60,16 +64,16 @@ void	init_cmds(t_cmd **cmd)
 {
 	int i;
 	t_prcess *prcess;
-	t_prcess *tmp;
+	t_prcess *current;
 
 	i = 0;
 	prcess = NULL;
-	tmp = NULL;
+	current = NULL;
 	while ((*cmd)->cmdline[i])
 	{
-		tmp = ft_prcessnew((*cmd)->cmdline[i]);
-		prcess_setid(tmp);
-		ft_prcessadd_back(&prcess, tmp);
+		current = ft_prcessnew((*cmd)->cmdline[i]);
+		prcess_setid(current);
+		ft_prcessadd_back(&prcess, current);
 		i++;
 	}
 
@@ -95,15 +99,15 @@ void	init_cmds(t_cmd **cmd)
 int exec_prcess(t_cmd *cmd)
 {
 	int (*f[1])(t_cmd *);
-	
+
 	f[cmd->cmd_id](cmd);
 	return (0);
 }*/
 
 int		input_process(char *line, t_cmd **cmd)
 {
-	int		i;
-	//char	*word;
+	int			i;
+	t_prcess	*current;
 	//int		cmd_nb;
 
 	i = 0;
@@ -116,6 +120,14 @@ int		input_process(char *line, t_cmd **cmd)
 	if (((*cmd)->cmdline = ft_split(line, ';')) == NULL)
 		return (write_errors(3, NULL));
 	init_cmds(cmd);
+	//cmd_parser(cmd);
+	current = (*cmd)->prcess;
+	while (current != NULL)
+	{
+		printf("%s\n", current->data);
+		printf("coucou");
+		current = current->next;
+	}
 	return(0);
 }
 
@@ -129,8 +141,8 @@ int		main(/*int argc, char **argv, char **data*/)
 	ret = 1;
 	if(init_struct(&cmd) == -1)
 		return (write_errors(3, NULL));
-	/*if (display_txt("banner.txt") == -1)
-		return (-1);*/
+	if (display_txt("banner.txt") == -1)
+		return (-1);
 	while(ret != 0)
 	{
 		write(1, "[minishell-1.0$ ", 16);
@@ -145,6 +157,3 @@ int		main(/*int argc, char **argv, char **data*/)
 	safe_free((char **)&cmd);
 	return (0);
 }
-
-
-// il faut que je vois pour gerer le " tout seul
