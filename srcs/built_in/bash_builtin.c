@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bash_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 11:36:40 by alganoun          #+#    #+#             */
-/*   Updated: 2021/02/24 09:59:34 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 13:40:01 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		bash_process(t_cmd **cmd, char **tab)
+int		bash_process(/*t_cmd **cmd,*/ char **tab)
 {
 	if (ft_strcmp(tab[1], "-help") == 0)
 	{
