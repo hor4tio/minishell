@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: allanganoun <allanganoun@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:54:52 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/05 14:40:11 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 15:46:30 by allanganoun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			init_struct(t_cmd **cmd);
 int			execute_command(t_cmd **cmd);
 void		free_tab(char ***tab, int count);
 void		safe_free(char **str);
-t_prcess	*ft_prcessnew(void *content);
+t_prcess	*ft_prcessnew(char *content);
 void		ft_prcessadd_back(t_prcess **aprcess, t_prcess *new);
 t_prcess	*ft_prcesslast(t_prcess *prcess);
 

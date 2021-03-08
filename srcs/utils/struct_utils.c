@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: allanganoun <allanganoun@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 08:53:22 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/04 11:35:11 by musoufi          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 15:46:21 by allanganoun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_prcessadd_back(t_prcess **aprcess, t_prcess *new)
 	}
 }
 
-t_prcess	*ft_prcessnew(void *content)
+t_prcess	*ft_prcessnew(char *content)
 {
 	t_prcess *list;
 

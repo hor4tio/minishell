@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: allanganoun <allanganoun@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 08:00:40 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/05 14:34:12 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 17:06:11 by allanganoun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,25 @@
 // 	return (nb);
 //}
 
-void	cmd_parser(t_cmd **cmd)
+int command_identifier(char *str)
 {
-	int			i;
-	t_prcess 	*current;
+	int i;
 
 	i = 0;
-	current = NULL;
-	while ((*cmd)->cmdline[i] != NULL)
-	{
-		if ((*cmd)->prcess == NULL)
-		{
-			(*cmd)->prcess = ft_prcessnew((char *)(*cmd)->cmdline[i]);
-			current = (*cmd)->prcess;
-		}
-		else
-		{
-			current->next = ft_prcessnew((char *)(*cmd)->cmdline[i]);
-			current = current->next;
-		}
-		i++;
-	}
-	current->next = NULL;
+	if 
 }
 
-//int		cmd_analyzer(char **tab, t_cmd **cmd)
-//{
-//
-//}
+int		quotes_checker(char *str) // 	est ce que cette fonction va servir 
+{
+	int	i;
+
+	i = 0;
+	if (str[i++] == '"')
+	{
+		while (str[i])
+			i++;
+		if (str[1 - 1] != '"')
+			return (-1);
+	}
+	return (0);
+} 

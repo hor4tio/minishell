@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alganoun <alganoun@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: allanganoun <allanganoun@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 08:37:43 by alganoun          #+#    #+#             */
-/*   Updated: 2021/03/05 14:51:02 by alganoun         ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 17:06:12 by allanganoun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	prcess_setid(t_prcess *prcess)
 
 	ft_bzero(tmp, 6);
 	ft_memcpy(tmp, prcess->data, 6);
-	if (strstr(prcess->data, "echo"))
+	if (strstr(prcess->data, "echo "))
 		prcess->id = ID_ECHO;
-	else if (strstr(prcess->data, "cd"))
+	else if (strstr(prcess->data, " cd "))
 		prcess->id = ID_CD;
 	else if(strstr(prcess->data, "pwd"))
 		prcess->id = ID_PWD;
@@ -63,20 +63,18 @@ void	prcess_setid(t_prcess *prcess)
 void	init_cmds(t_cmd **cmd)
 {
 	int i;
-	t_prcess *prcess;
 	t_prcess *current;
+	t_prcess *prcess;
 
 	i = 0;
-	prcess = NULL;
 	current = NULL;
-	while ((*cmd)->cmdline[i])
-	{
+	while ((*cmd)->cmdline[i] != NULL)
+	{ 
 		current = ft_prcessnew((*cmd)->cmdline[i]);
+		ft_prcessadd_back(&((*cmd)->prcess), current);
 		prcess_setid(current);
-		ft_prcessadd_back(&prcess, current);
 		i++;
 	}
-
 	/*TESTEUR: AFFICHER LES COMMANDES DANS CHAQUE ELEMENT DE LA LISTE CHAINÉE
 	while (prcess)
 	{
@@ -108,26 +106,10 @@ int		input_process(char *line, t_cmd **cmd)
 {
 	int			i;
 	t_prcess	*current;
-	//int		cmd_nb;
-
 	i = 0;
-	//cmd_nb = word_count(line);
-	//if (((*cmd)->cmdline = cmd_parser(line, cmd_nb)) == NULL)
-	//	return (write_errors(3, NULL));
-	//if (execute_command(cmd) == -1)
-	//	return (-1);
-	//free_tab(&((*cmd)->cmdline), cmd_nb + 1);
 	if (((*cmd)->cmdline = ft_split(line, ';')) == NULL)
 		return (write_errors(3, NULL));
 	init_cmds(cmd);
-	//cmd_parser(cmd);
-	current = (*cmd)->prcess;
-	while (current != NULL)
-	{
-		printf("%s\n", current->data);
-		printf("coucou");
-		current = current->next;
-	}
 	return(0);
 }
 
@@ -147,9 +129,7 @@ int		main(/*int argc, char **argv, char **data*/)
 	{
 		write(1, "[minishell-1.0$ ", 16);
 		get_next_input(&line);
-		if ((ret = ft_strncmp(line, "exit", 4)) == 0)
-			write(1, EXIT_MSG, ft_strlen(EXIT_MSG));
-		else if (input_process(line, &cmd) == -1)
+		if (input_process(line, &cmd) == -1)
 			return(-1);
 		safe_free(&line);
 	}
